@@ -1,0 +1,175 @@
+from controller import Robot
+import datetime
+
+# =============================================================================
+# CONTROLADOR AUTÓNOMO PARA ROBOT E-PUCK EN WEBOTS
+# -----------------------------------------------------------------------------
+# Este script permite que un robot e-puck navegue de forma autónoma,
+# evitando obstáculos mediante sensores de proximidad, controlando motores
+# y mostrando estados visuales con LEDs. También registra colisiones, tiempo
+# y distancia recorrida, y guarda los resultados en un archivo.
+# =============================================================================
+
+# ===== PARÁMETROS GENERALES DE SIMULACIÓN =====
+TIME_STEP = 64           # Intervalo de actualización de la simulación en ms
+MAX_SPEED = 6.28         # Velocidad máxima de los motores (rad/s)
+
+# ===== INICIALIZACIÓN DEL ROBOT =====
+robot = Robot()          # Crear instancia del robot e-puck
+
+# ===== CONFIGURACIÓN DE SENSORES DE PROXIMIDAD =====
+# Sensores ps0 a ps7 (infraestructura por defecto del e-puck)
+prox_sensors = []
+for i in range(8):
+    sensor = robot.getDevice(f'ps{i}')
+    sensor.enable(TIME_STEP)
+    prox_sensors.append(sensor)
+
+# ===== CÁMARA =====
+# Se habilita pero no se utiliza en este controlador
+camera = robot.getDevice("camera")
+camera.enable(TIME_STEP)
+
+# ===== MOTORES DE RUEDAS =====
+# Se configuran en modo de velocidad continua (sin posición objetivo)
+left_motor = robot.getDevice('left wheel motor')
+right_motor = robot.getDevice('right wheel motor')
+left_motor.setPosition(float('inf'))
+right_motor.setPosition(float('inf'))
+left_motor.setVelocity(0.0)
+right_motor.setVelocity(0.0)
+
+# ===== LEDS DE ESTADO =====
+# LEDs visuales para indicar estado del robot (hasta 10 por defecto)
+leds = []
+for i in range(10):
+    try:
+        led = robot.getDevice(f'led{i}')
+        leds.append(led)
+    except:
+        pass  # Ignorar si algún LED no existe en el modelo
+
+def set_led_state(state: str):
+    """
+    Cambia el color de los LEDs según el estado del robot.
+
+    Posibles estados:
+    - 'go': verde (avanzando)
+    - 'turning': azul (girando)
+    - 'obstacle': rojo (colisión)
+    - 'goal': amarillo (meta alcanzada) [no usado en esta versión]
+    - 'stuck': violeta (atascado)
+    """
+    colors = {
+        'go': (1, 0, 0),
+        'turning': (0, 0, 1),
+        'obstacle': (0, 1, 0),
+        'goal': (1, 1, 0),
+        'stuck': (1, 0, 1),
+    }
+    r, g, b = colors.get(state, (0, 0, 0))
+    for led in leds:
+        led.set(r + g * 2 + b * 4)  # Codificación RGB en Webots
+
+def read_proximity(index):
+    """Devuelve el valor del sensor de proximidad ps[index]."""
+    return prox_sensors[index].getValue()
+
+# ===== MÉTRICAS DE EJECUCIÓN =====
+start_time = robot.getTime()
+distance = 0.0           # Distancia estimada recorrida
+collisions = 0           # Contador de colisiones
+goal_reached = False     # Variable reservada (no se usa en esta versión)
+stuck_counter = 0        # Contador de ciclos sin progreso
+
+# ===== LÓGICA DE NAVEGACIÓN =====
+def navigate():
+    """
+    Define el comportamiento del robot en función de los sensores de proximidad:
+    - Si hay un obstáculo adelante: gira
+    - Si la derecha está libre: gira a la derecha (seguir pared)
+    - Si todo está despejado: avanza recto
+    """
+    global collisions, goal_reached, stuck_counter
+
+    # Lectura de sensores frontales y laterales
+    front_left = read_proximity(0)
+    front_right = read_proximity(7)
+    side_right = read_proximity(2)
+
+    obstacle_ahead = front_left > 80 or front_right > 80
+    right_clear = side_right < 60
+
+    # Comportamiento en caso de colisión frontal fuerte
+    if front_left > 100 and front_right > 100:
+        collisions += 1
+        set_led_state('obstacle')
+        left_motor.setVelocity(-0.5 * MAX_SPEED)
+        right_motor.setVelocity(-0.5 * MAX_SPEED)
+        stuck_counter += 1
+        for _ in range(5):
+            robot.step(TIME_STEP)  # Retrocede por unos pasos
+        return
+
+    # Comportamiento adaptativo según obstáculos
+    if obstacle_ahead:
+        set_led_state('turning')
+        left_motor.setVelocity(0.4 * MAX_SPEED)
+        right_motor.setVelocity(-0.4 * MAX_SPEED)
+        stuck_counter += 1
+    elif right_clear:
+        set_led_state('turning')
+        left_motor.setVelocity(0.6 * MAX_SPEED)
+        right_motor.setVelocity(0.2 * MAX_SPEED)
+        stuck_counter = 0
+    else:
+        set_led_state('go')
+        left_motor.setVelocity(0.5 * MAX_SPEED)
+        right_motor.setVelocity(0.5 * MAX_SPEED)
+        stuck_counter = 0
+
+# ===== BUCLE PRINCIPAL DE SIMULACIÓN =====
+print("✅ Controlador iniciado correctamente.")
+max_stuck = 50  # Máximo de ciclos permitidos sin avance
+
+while robot.step(TIME_STEP) != -1 and not goal_reached and stuck_counter < max_stuck:
+    navigate()
+
+    # Cálculo de distancia estimada
+    v_left = left_motor.getVelocity()
+    v_right = right_motor.getVelocity()
+    v_avg = (v_left + v_right) / 2
+    distance += abs(v_avg * (TIME_STEP / 1000))
+
+# ===== FINALIZACIÓN =====
+left_motor.setVelocity(0)
+right_motor.setVelocity(0)
+
+if stuck_counter >= max_stuck and not goal_reached:
+    set_led_state('stuck')
+    print("⚠️ Robot atascado. Detenido por seguridad.")
+
+# ===== RESULTADOS EN CONSOLA =====
+end_time = robot.getTime()
+total_time = end_time - start_time
+
+print("\n📊 RESULTADOS DE LA NAVEGACIÓN")
+print(f"⏱ Tiempo total      : {total_time:.2f} s")
+print(f"📏 Distancia estimada: {distance:.2f} unidades")
+print(f"💥 Colisiones        : {collisions}")
+print(f"🎯 Meta alcanzada    : {'Sí' if goal_reached else 'No'}")
+print(f"🔚 Estado final      : {'Atascado' if stuck_counter >= max_stuck else 'Finalizado correctamente'}")
+
+# ===== GUARDAR RESULTADOS EN ARCHIVO =====
+fecha = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+try:
+    with open(f"resultados_navegacion_{fecha}.txt", "w") as file:
+        file.write("===== RESULTADOS DE LA NAVEGACIÓN =====\n")
+        file.write(f"Tiempo total      : {total_time:.2f} s\n")
+        file.write(f"Distancia aprox.  : {distance:.2f} unidades\n")
+        file.write(f"Colisiones        : {collisions}\n")
+        file.write(f"Meta alcanzada    : {'Sí' if goal_reached else 'No'}\n")
+        file.write(f"Estado final      : {'Atascado' if stuck_counter >= max_stuck else 'Finalizado correctamente'}\n")
+    print("📝 Resultados guardados correctamente.")
+except:
+    print("⚠️ No se pudo guardar el archivo de resultados.")

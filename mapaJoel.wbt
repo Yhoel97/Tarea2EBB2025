@@ -1,0 +1,744 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/gctronic/e-puck/protos/E-puck.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.24463423967517828 0.7513424590576225 0.6128936269825229 0.9766704196476207
+  position -0.9943758985377082 -0.7301065742657589 2.862382038080833
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Floor {
+  translation 1 1 0
+  size 2 2
+}
+Solid {
+  translation 0.1 0.1 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.8 0.4 0.1
+        }
+      }
+      geometry Box {
+        size 0.2 0.2 0.2
+      }
+    }
+  ]
+}
+Solid {
+  translation 0.1 0.30000000000000004 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.8 0.4 0.1
+        }
+      }
+      geometry Box {
+        size 0.2 0.2 0.2
+      }
+    }
+  ]
+}
+Solid {
+  translation 0.1 0.5 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.8 0.4 0.1
+        }
+      }
+      geometry Box {
+        size 0.2 0.2 0.2
+      }
+    }
+  ]
+}
+Solid {
+  translation 0.1 0.7000000000000001 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.1 0.3 0.8
+        }
+      }
+      geometry Cone {
+        bottomRadius 0.08
+        height 0.2
+      }
+    }
+  ]
+}
+Solid {
+  translation 0.1 0.9 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.2 0.7 0.2
+        }
+      }
+      geometry Cylinder {
+        height 0.2
+        radius 0.08
+      }
+    }
+  ]
+}
+Solid {
+  translation 0.1 1.1 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.2 0.7 0.2
+        }
+      }
+      geometry Cylinder {
+        height 0.2
+        radius 0.08
+      }
+    }
+  ]
+}
+Solid {
+  translation 0.1 1.3000000000000003 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.1 0.3 0.8
+        }
+      }
+      geometry Cone {
+        bottomRadius 0.08
+        height 0.2
+      }
+    }
+  ]
+}
+Solid {
+  translation 0.1 1.5000000000000002 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.2 0.7 0.2
+        }
+      }
+      geometry Cylinder {
+        height 0.2
+        radius 0.08
+      }
+    }
+  ]
+}
+Solid {
+  translation 0.1 1.7000000000000002 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.2 0.7 0.2
+        }
+      }
+      geometry Cylinder {
+        height 0.2
+        radius 0.08
+      }
+    }
+  ]
+}
+Solid {
+  translation 0.1 1.9000000000000001 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.1 0.3 0.8
+        }
+      }
+      geometry Cone {
+        bottomRadius 0.08
+        height 0.2
+      }
+    }
+  ]
+}
+Solid {
+  translation 0.30000000000000004 0.1 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.1 0.3 0.8
+        }
+      }
+      geometry Cone {
+        bottomRadius 0.08
+        height 0.2
+      }
+    }
+  ]
+}
+Solid {
+  translation 0.30000000000000004 1.3000000000000003 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.2 0.7 0.2
+        }
+      }
+      geometry Cylinder {
+        height 0.2
+        radius 0.08
+      }
+    }
+  ]
+}
+Solid {
+  translation 0.30000000000000004 1.9000000000000001 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.8 0.4 0.1
+        }
+      }
+      geometry Box {
+        size 0.2 0.2 0.2
+      }
+    }
+  ]
+}
+Solid {
+  translation 0.5 0.1 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.2 0.7 0.2
+        }
+      }
+      geometry Cylinder {
+        height 0.2
+        radius 0.08
+      }
+    }
+  ]
+}
+Solid {
+  translation 0.5 0.5 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.1 0.3 0.8
+        }
+      }
+      geometry Cone {
+        bottomRadius 0.08
+        height 0.2
+      }
+    }
+  ]
+}
+Solid {
+  translation 0.5 1.3000000000000003 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.2 0.7 0.2
+        }
+      }
+      geometry Cylinder {
+        height 0.2
+        radius 0.08
+      }
+    }
+  ]
+}
+Solid {
+  translation 0.5 1.9000000000000001 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.1 0.3 0.8
+        }
+      }
+      geometry Cone {
+        bottomRadius 0.08
+        height 0.2
+      }
+    }
+  ]
+}
+Solid {
+  translation 0.7000000000000001 0.1 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.1 0.3 0.8
+        }
+      }
+      geometry Cone {
+        bottomRadius 0.08
+        height 0.2
+      }
+    }
+  ]
+}
+Solid {
+  translation 0.7000000000000001 0.5 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.8 0.4 0.1
+        }
+      }
+      geometry Box {
+        size 0.2 0.2 0.2
+      }
+    }
+  ]
+}
+Solid {
+  translation 0.7000000000000001 1.9000000000000001 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.8 0.4 0.1
+        }
+      }
+      geometry Box {
+        size 0.2 0.2 0.2
+      }
+    }
+  ]
+}
+Solid {
+  translation 0.9 0.1 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.2 0.7 0.2
+        }
+      }
+      geometry Cylinder {
+        height 0.2
+        radius 0.08
+      }
+    }
+  ]
+}
+Solid {
+  translation 0.9 0.5 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.1 0.3 0.8
+        }
+      }
+      geometry Cone {
+        bottomRadius 0.08
+        height 0.2
+      }
+    }
+  ]
+}
+Solid {
+  translation 0.9 1.3000000000000003 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.1 0.3 0.8
+        }
+      }
+      geometry Cone {
+        bottomRadius 0.08
+        height 0.2
+      }
+    }
+  ]
+}
+Solid {
+  translation 0.9 1.9000000000000001 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.1 0.3 0.8
+        }
+      }
+      geometry Cone {
+        bottomRadius 0.08
+        height 0.2
+      }
+    }
+  ]
+}
+Solid {
+  translation 1.1 0.1 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.2 0.7 0.2
+        }
+      }
+      geometry Cylinder {
+        height 0.2
+        radius 0.08
+      }
+    }
+  ]
+}
+Solid {
+  translation 1.1 1.9000000000000001 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.1 0.3 0.8
+        }
+      }
+      geometry Cone {
+        bottomRadius 0.08
+        height 0.2
+      }
+    }
+  ]
+}
+Solid {
+  translation 1.3000000000000003 0.1 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.1 0.3 0.8
+        }
+      }
+      geometry Cone {
+        bottomRadius 0.08
+        height 0.2
+      }
+    }
+  ]
+}
+Solid {
+  translation 1.3000000000000003 1.5000000000000002 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.8 0.4 0.1
+        }
+      }
+      geometry Box {
+        size 0.2 0.2 0.2
+      }
+    }
+  ]
+}
+Solid {
+  translation 1.3000000000000003 1.7000000000000002 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.8 0.4 0.1
+        }
+      }
+      geometry Box {
+        size 0.2 0.2 0.2
+      }
+    }
+  ]
+}
+Solid {
+  translation 1.3000000000000003 1.9000000000000001 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.8 0.4 0.1
+        }
+      }
+      geometry Box {
+        size 0.2 0.2 0.2
+      }
+    }
+  ]
+}
+Solid {
+  translation 1.5000000000000002 0.1 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.8 0.4 0.1
+        }
+      }
+      geometry Box {
+        size 0.2 0.2 0.2
+      }
+    }
+  ]
+}
+Solid {
+  translation 1.5000000000000002 1.9000000000000001 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.2 0.7 0.2
+        }
+      }
+      geometry Cylinder {
+        height 0.2
+        radius 0.08
+      }
+    }
+  ]
+}
+Solid {
+  translation 1.7000000000000002 0.1 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.2 0.7 0.2
+        }
+      }
+      geometry Cylinder {
+        height 0.2
+        radius 0.08
+      }
+    }
+  ]
+}
+Solid {
+  translation 1.7000000000000002 1.3000000000000003 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.1 0.3 0.8
+        }
+      }
+      geometry Cone {
+        bottomRadius 0.08
+        height 0.2
+      }
+    }
+  ]
+}
+Solid {
+  translation 1.7000000000000002 1.9000000000000001 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.2 0.7 0.2
+        }
+      }
+      geometry Cylinder {
+        height 0.2
+        radius 0.08
+      }
+    }
+  ]
+}
+Solid {
+  translation 1.9000000000000001 0.1 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.8 0.4 0.1
+        }
+      }
+      geometry Box {
+        size 0.2 0.2 0.2
+      }
+    }
+  ]
+}
+Solid {
+  translation 1.9000000000000001 0.30000000000000004 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.1 0.3 0.8
+        }
+      }
+      geometry Cone {
+        bottomRadius 0.08
+        height 0.2
+      }
+    }
+  ]
+}
+Solid {
+  translation 1.9000000000000001 0.5 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.2 0.7 0.2
+        }
+      }
+      geometry Cylinder {
+        height 0.2
+        radius 0.08
+      }
+    }
+  ]
+}
+Solid {
+  translation 1.9000000000000001 0.7000000000000001 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.2 0.7 0.2
+        }
+      }
+      geometry Cylinder {
+        height 0.2
+        radius 0.08
+      }
+    }
+  ]
+}
+Solid {
+  translation 1.9000000000000001 0.9 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.1 0.3 0.8
+        }
+      }
+      geometry Cone {
+        bottomRadius 0.08
+        height 0.2
+      }
+    }
+  ]
+}
+Solid {
+  translation 1.9000000000000001 1.1 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.1 0.3 0.8
+        }
+      }
+      geometry Cone {
+        bottomRadius 0.08
+        height 0.2
+      }
+    }
+  ]
+}
+Solid {
+  translation 1.9000000000000001 1.3000000000000003 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.8 0.4 0.1
+        }
+      }
+      geometry Box {
+        size 0.2 0.2 0.2
+      }
+    }
+  ]
+}
+Solid {
+  translation 1.9000000000000001 1.5000000000000002 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.2 0.7 0.2
+        }
+      }
+      geometry Cylinder {
+        height 0.2
+        radius 0.08
+      }
+    }
+  ]
+}
+Solid {
+  translation 1.9000000000000001 1.7000000000000002 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.2 0.7 0.2
+        }
+      }
+      geometry Cylinder {
+        height 0.2
+        radius 0.08
+      }
+    }
+  ]
+}
+Solid {
+  translation 1.9000000000000001 1.9000000000000001 0.1
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.1 0.3 0.8
+        }
+      }
+      geometry Cone {
+        bottomRadius 0.08
+        height 0.2
+      }
+    }
+  ]
+}
+E-puck {
+  hidden position_0_0 1568.1956674991686
+  hidden position_0_1 1443.0098369244054
+  hidden linearVelocity_0 0.06120426070760101 -0.014136662457190181 7.000436435383456e-09
+  hidden angularVelocity_0 0.0002348998370050576 0.0010169650004663326 4.928439911797387e-09
+  hidden rotation_1 0 -1 0 2.600659295727998
+  hidden linearVelocity_1 0.06120933618654066 -0.014137874491640794 1.5911290951803626e-10
+  hidden angularVelocity_1 0.7068918764508952 3.0604672289272883 7.763529215185299e-08
+  hidden rotation_2 0 -1 0 2.122783726899527
+  hidden linearVelocity_2 0.061209353955460254 -0.014137799207851775 -1.3893277818318927e-10
+  hidden angularVelocity_2 0.7068918011689581 3.060467246330737 -7.823913547117538e-08
+  translation 0.9006927631550256 1.1114986008743628 -6.39531307445318e-05
+  rotation 0.00047419151588305725 0.004160111822030649 -0.9999912342675983 0.22699630504671567
+  controller "my_controller_t2"
+}
